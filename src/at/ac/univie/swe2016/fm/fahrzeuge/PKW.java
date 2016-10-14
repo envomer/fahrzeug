@@ -13,6 +13,7 @@ public class PKW extends Fahrzeug
     @Override
     public float getRabatt() {
         Calendar now  = Calendar.getInstance();
-        return 5 * (now.get(Calendar.YEAR) - this.getBaujahr()) + (2 * this.getLetzteUeberpruefung().get(Calendar.YEAR));
+        float rabatt = 5 * (now.get(Calendar.YEAR) - this.getBaujahr()) + (2 * this.getLetzteUeberpruefung().get(Calendar.YEAR));
+        return rabatt > 0 ? rabatt : 0;
     }
 }

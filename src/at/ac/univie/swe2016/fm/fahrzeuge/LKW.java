@@ -7,6 +7,7 @@ public class LKW extends Fahrzeug {
     @Override
     public float getRabatt() {
         Calendar now  = Calendar.getInstance();
-        return 5 * (now.get(Calendar.YEAR) - this.getBaujahr());
+        float rabatt = 5 * (now.get(Calendar.YEAR) - this.getBaujahr());
+        return rabatt > 0 ? rabatt : 0;
     }
 }
