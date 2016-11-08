@@ -1,8 +1,9 @@
 package swe2016.fm.fahrzeuge.dao;
 
-import at.ac.univie.swe2016.fm.fahrzeuge.Fahrzeug;
+import at.ac.univie.swe2016.fm.fahrzeug.Fahrzeug;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface FahrzeugDAO
 {

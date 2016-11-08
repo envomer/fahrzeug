@@ -1,18 +1,19 @@
-package at.ac.univie.swe2016.fm.fahrzeuge;
+package at.ac.univie.swe2016.fm.fahrzeug;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-abstract public class Fahrzeug
+abstract public class Fahrzeug implements Serializable
 {
     private String marke;
     private String modell;
     private int baujahr;
-    private float grundpreis;
+    private double grundpreis;
     private int id;
 
     public Fahrzeug() {}
 
-    public Fahrzeug(String marke, String modell, int baujahr, float grundpreis, int id) {
+    public Fahrzeug(String marke, String modell, int baujahr, double grundpreis, int id) {
         this.setMarke(marke);
         this.setBaujahr(baujahr);
         this.setModell(modell);
@@ -20,7 +21,7 @@ abstract public class Fahrzeug
         this.setId(id);
     }
 
-    abstract public float getRabatt();
+    abstract public double getRabatt();
 
     public String getMarke() {
         return marke;
@@ -50,11 +51,11 @@ abstract public class Fahrzeug
         this.baujahr = baujahr;
     }
 
-    public float getGrundpreis() {
+    public double getGrundpreis() {
         return grundpreis;
     }
 
-    public void setGrundpreis(float grundpreis) {
+    public void setGrundpreis(double grundpreis) {
         this.grundpreis = grundpreis;
     }
 
@@ -66,19 +67,16 @@ abstract public class Fahrzeug
         this.id = id;
     }
 
-    public int getAlter()
-    {
+    public int getAlter() {
         Calendar now = Calendar.getInstance();
         return now.get(Calendar.YEAR) - this.getBaujahr();
     }
 
-    public float getPreis()
-    {
+    public double getPreis() {
         return (this.getGrundpreis() * this.getRabatt()) / 100;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return "Fahrzeug dump";
     }
 
