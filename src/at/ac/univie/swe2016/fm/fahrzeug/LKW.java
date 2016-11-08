@@ -4,6 +4,10 @@ import java.util.Calendar;
 
 public class LKW extends Fahrzeug {
 
+    public LKW(String marke, String modell, int baujahr, double grundpreis, int id) {
+        super(marke, modell, baujahr, grundpreis, id);
+    }
+
     @Override
     public double getRabatt() {
         Calendar now  = Calendar.getInstance();
