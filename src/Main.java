@@ -8,11 +8,19 @@ public class Main
     {
         FahrzeugManagement man = new FahrzeugManagement();
 
-        PKW pkw = new PKW("Omer", "Mer", 2000,20000.0, 1);
+        PKW pkw = new PKW("Omer", "Mer", 2000,20000.0, 11);
         man.addFahrzeug(pkw);
 
-        LKW lkw = new LKW("Omer", "Mer", 2000,20000.0, 1);
+        LKW lkw = new LKW("Omer", "Mer", 2000,20000.0, 2);
         man.addFahrzeug(lkw);
+
+        System.out.println("LKW:" + man.countLKW());
+        System.out.println("PKW:" + man.countPKW());
+        System.out.println("All fahrzeuge:" + man.countFahrzeuge());
+
+//        Fahrzeuge ff = man.
+        man.removeFahrzeug(pkw);
+//        man.removeFahrzeug(lkw);
 
         System.out.println("LKW:" + man.countLKW());
         System.out.println("PKW:" + man.countPKW());

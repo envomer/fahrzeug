@@ -13,10 +13,11 @@ public class FahrzeugManagement
     private FahrzeugDAO fahrzeugDAO;
 
     public FahrzeugManagement() {
-        this.fahrzeugDAO = new SerializedFahrzeugDAO("/Users/envomer/Downloads/fahrzeuge.ext");
+        this.fahrzeugDAO = new SerializedFahrzeugDAO("/Users/envomer/Downloads/fahrzeuge.txt");
     }
 
     public void addFahrzeug(Fahrzeug fahrzeug) {
+        int count = this.fahrzeugDAO.getFahrzeugList().size();
         this.fahrzeugDAO.speichereFahrzeug(fahrzeug);
     }
 
@@ -49,5 +50,63 @@ public class FahrzeugManagement
             }
         }
         return count;
+    }
+
+    public double averageFahrzeugPreis() {
+        ArrayList<Fahrzeug> fahrzeuge = this.fahrzeugDAO.getFahrzeugList();
+        double sum = 0.0;
+        for(Fahrzeug fahrzeug: fahrzeuge) {
+            sum += fahrzeug.getPreis();
+        }
+        return sum/fahrzeuge.size();
+    }
+
+    public double averagePKWPreis() {
+        ArrayList<Fahrzeug> fahrzeuge = this.fahrzeugDAO.getFahrzeugList();
+        double sum = 0.0;
+        int total = 0;
+        for(Fahrzeug fahrzeug: fahrzeuge) {
+            if( ! (fahrzeug instanceof PKW) ) continue;
+            sum += fahrzeug.getPreis();
+            total += 0;
+        }
+        return sum/total;
+    }
+
+    public double averageLKWPreis() {
+        ArrayList<Fahrzeug> fahrzeuge = this.fahrzeugDAO.getFahrzeugList();
+        double sum = 0.0;
+        int count = 0;
+        for(Fahrzeug fahrzeug: fahrzeuge) {
+            if( ! (fahrzeug instanceof LKW) ) continue;
+            sum += fahrzeug.getPreis();
+            count += 0;
+        }
+        return sum/count;
+    }
+
+    public double averageFahrzeugAlter()
+    {
+        ArrayList<Fahrzeug> fahrzeuge = this.fahrzeugDAO.getFahrzeugList();
+        double totalAlter = 0.0;
+        for(Fahrzeug fahrzeug: fahrzeuge) {
+            if( ! (fahrzeug instanceof LKW) ) continue;
+            totalAlter += fahrzeug.getAlter();
+        }
+        return totalAlter/fahrzeuge.size();
+    }
+
+    public Fahrzeug oldestFahrzeug()
+    {
+        ArrayList<Fahrzeug> fahrzeuge = this.fahrzeugDAO.getFahrzeugList();
+        Fahrzeug fahrzeug2 = null;
+        int alter = 0;
+        for(Fahrzeug fahrzeug: fahrzeuge) {
+            if( alter < fahrzeug.getAlter() ) {
+                alter = fahrzeug.getAlter();
+                fahrzeug2 = fahrzeug;
+            }
+        }
+        return fahrzeug2;
     }
 }
