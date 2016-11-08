@@ -9,10 +9,13 @@ public class Main
         FahrzeugManagement man = new FahrzeugManagement();
 
         PKW pkw = new PKW("Omer", "Mer", 2000,20000.0, 11);
+        pkw.setLetzteUeberpruefung();
         man.addFahrzeug(pkw);
+        System.out.println(pkw.toString());
 
         LKW lkw = new LKW("Omer", "Mer", 2000,20000.0, 2);
         man.addFahrzeug(lkw);
+        System.out.println(lkw.toString());
 
         System.out.println("LKW:" + man.countLKW());
         System.out.println("PKW:" + man.countPKW());
